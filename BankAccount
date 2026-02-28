@@ -1,0 +1,26 @@
+package innerClass.memberinnerclass;
+
+public class BankAccount {
+    private double balance;
+    class Transaction{
+        void withdraw(double amount){
+            if(amount <= balance){
+                balance-=amount;
+                System.out.println("withdrawn:"+amount);
+
+            }else {
+                System.out.println("not enough money");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        BankAccount account=new BankAccount();
+        BankAccount.Transaction tx=account.new Transaction();
+        tx.withdraw(3000);
+        tx.withdraw(2000);
+        System.out.println(account.balance);
+
+    }
+}
+
