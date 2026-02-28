@@ -1,0 +1,28 @@
+package threads;
+
+public class DeadlockDemo {
+    static final Object = new Object();
+    static final Object = new Object();
+
+    public static void main(String[] args) {
+        Thread t1=new Thread(() -> {
+            synchronized (accountA){
+                System.out.println("t1 locked account a");
+                synchronized (accountB){
+                    System.out.println("t1 locked account b");
+                }
+            }
+        });
+        Thread t2 =new Thread(() -> {
+            synchronized (accountA){
+                System.out.println("t2 locked account a");
+                synchronized (accountB){
+                    System.out.println("t2 locked account b");
+                }
+            }
+        });
+        t1.start();
+        t2.start();
+    }
+}
+
